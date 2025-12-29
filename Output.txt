@@ -1,1 +1,1 @@
-W (Warrior) HP=100 STR=20 DEF=10 Room=A Weapon=sword Shield=None
+Thorin (Warrior) HP=106 STR=20 DEF=15 Room=TreasureRoom Weapon=sword Shield=shield
