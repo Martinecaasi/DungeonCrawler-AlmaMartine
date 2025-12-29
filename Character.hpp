@@ -1,38 +1,77 @@
-#pragma once
-#include <cstring>
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
+
+#include <string>
+#include <iostream>
+
+#include "Room.hpp"
 #include "Item.hpp"
+#include "Monster.hpp"
 
-class Character
-{
-private:
-          char* name;
-          int health;
-          int strength;
-          int defense;
+class Character {
 public:
-          Character(char* newName,int newHealth,int newStrength, int newDefense);
+    enum class ClassType { Warrior, Thief, Mage };
+    enum class EquipSlot { Weapon, Shield };
 
-          Character(const Character& other);
-          Character& operator=(const Character& other);
+private:
+    std::string name;
+    ClassType cls;
 
-          virtual ~Character();
+    int health;
+    int strength;
+    int defense;
 
-          void attack(Monster& target);
-          void defend(int damage);
-          bool isALive() const;
+    Room* currentRoom;
 
-          Character operator+(const Item& item);
+    Item* equippedWeapon;
+    Item* equippedShield;
 
-          //Getters
-          char* getName() const;
-          int getHealth() const;
-          int getStrength() const;
-          int getDefense()const;
+private:
+    static std::string toLower(std::string s);
 
-protected:
+    static ClassType parseClass(const std::string& className);
+    static std::string classToString(ClassType c);
 
-          void setHealth(int h);
-          void setStrength(int s);
-          void setDefense(int d);
+    static void defaultStats(ClassType c, int& hp, int& str, int& def);
+
+    static bool isPotionName(const std::string& itemName);
+    static bool isWeaponName(const std::string& itemName);
+    static bool isShieldName(const std::string& itemName);
+
+    void applyPotionByName(const std::string& potionName);
+
+    bool canEquipItem(const Item* item) const;
+    EquipSlot slotForItem(const Item* item) const;
+
+    int totalStatsWithItem(const Item* item) const;
+    int totalStatsOfEquipped(EquipSlot slot) const;
+
+    bool tryEquip(Item* item);
+
+public:
+    Character(const std::string& className, const std::string& name);
+    ~Character();
+
+    // Basics
+    const std::string& getName() const;
+    Room* getCurrentRoom() const;
+    void setCurrentRoom(Room* room);
+
+    int getHealth() const;
+    int getStrength() const;
+    int getDefense() const;
+
+    int getEffectiveStrength() const;
+    int getEffectiveDefense() const;
+
+    bool isAlive() const;
+
+    // Actions
+    void move(const std::string& direction);
+    void pickUp(const std::string& itemName);
+    void fight(const std::string& monsterName);
+
+    std::string getStatus() const;
 };
 
+#endif
