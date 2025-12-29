@@ -1,11 +1,10 @@
+#include "Dungeon.hpp"
+
 int main() {
 
-    Game game;
+    Dungeon game;
     game.loadFromFile("input.txt");
-
-    // Run game logic based on loaded commands
     game.executeCommands();
-
     game.outputFinalState("output.txt");
 
     return 0;
