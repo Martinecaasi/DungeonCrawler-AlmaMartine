@@ -1,7 +1,10 @@
 create room A
-create mage M
+create warrior W
 Set StartRoom A
-Enter Dungeon M
+Enter Dungeon W
 
 place sword A 0 0 0
-PickUp M sword
+PickUp W sword
+
+place sword A 0 5 0
+PickUp W sword
