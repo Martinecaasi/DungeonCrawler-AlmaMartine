@@ -3,9 +3,9 @@
 int main() {
 
     Dungeon game;
-    game.loadFromFile("input.txt");
+    game.loadFromFile("Input.txt");
     game.executeCommands();
-    game.outputFinalState("output.txt");
+    game.outputFinalState("Output.txt");
 
     return 0;
 }
