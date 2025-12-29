@@ -1,5 +1,11 @@
 create room A
+create room B
+connect A B North
+
 create warrior P
 Set StartRoom A
 Enter Dungeon P
+
+place sword A 0 0 0
 Move P North
+PickUp P sword
