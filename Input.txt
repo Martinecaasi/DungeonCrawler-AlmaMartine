@@ -1,2 +1,5 @@
-create warrior A
-Enter Dungeon A
+create room A
+create warrior P
+Set StartRoom A
+Enter Dungeon P
+Move P North
