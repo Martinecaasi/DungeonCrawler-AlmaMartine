@@ -1,7 +1,7 @@
 create room A
-create warrior P
+create mage M
 Set StartRoom A
-Enter Dungeon P
+Enter Dungeon M
 
-place healthpotion A 0 0 0
-PickUp P healthpotion
+place sword A 0 0 0
+PickUp M sword

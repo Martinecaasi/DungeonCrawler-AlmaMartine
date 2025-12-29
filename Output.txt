@@ -1,1 +1,1 @@
-P (Warrior) HP=100 STR=15 DEF=10 Room=B Weapon=None Shield=None
+P (Warrior) HP=110 STR=15 DEF=10 Room=A Weapon=None Shield=None
