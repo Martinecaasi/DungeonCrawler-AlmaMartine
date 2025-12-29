@@ -1,10 +1,54 @@
-create room A
-create warrior W
-Set StartRoom A
-Enter Dungeon W
+// ===== Create character =====
+create warrior Thorin
 
-place sword A 0 0 0
-PickUp W sword
+// ===== Create rooms =====
+create room Entrance
+create room Hallway
+create room Armory
+create room TreasureRoom
 
-place sword A 0 5 0
-PickUp W sword
+// ===== Set dungeon layout =====
+Set StartRoom Entrance
+connect Entrance Hallway North
+connect Hallway Armory East
+connect Hallway TreasureRoom North
+
+// ===== Place items =====
+place sword Entrance 0 3 0
+place healthpotion Hallway 0 0 0
+place shield Armory 0 0 5
+place sword TreasureRoom 0 5 0
+
+// ===== Place monsters =====
+place monster Goblin Hallway 30 5 2
+place monster Orc TreasureRoom 50 8 4
+
+// ===== Gameplay =====
+Enter Dungeon Thorin
+
+// pick up starter weapon
+PickUp Thorin sword
+
+// move and fight goblin
+Move Thorin North
+Fight Thorin Goblin
+
+// drink potion
+PickUp Thorin healthpotion
+
+// try illegal pickup (item not here)
+PickUp Thorin shield
+
+// go to armory and equip shield
+Move Thorin East
+PickUp Thorin shield
+
+// go back and forward to treasure room
+Move Thorin West
+Move Thorin North
+
+// fight stronger monster
+Fight Thorin Orc
+
+// upgrade weapon (better sword replaces old)
+PickUp Thorin sword

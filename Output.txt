@@ -1,1 +1,1 @@
-M (Mage) HP=40 STR=25 DEF=5 Room=A Weapon=None Shield=None
+W (Warrior) HP=100 STR=20 DEF=10 Room=A Weapon=sword Shield=None
